@@ -13,7 +13,7 @@ class Blockchain{
         this.chain.push(newBlock);
     }
     replaceChain(chain){
-        if(chain<=this.chain.length)
+        if(chain.length<=this.chain.length)
         {
             console.error("the incoming chain is not longer");
             return 
@@ -32,6 +32,7 @@ class Blockchain{
         for(let i=1;i<chain.length;i++){
             const {timestamp,prevHash,hash,nonce,difficulty,data}=chain[i];
             const lastDifficulty=chain[i-1].difficulty;
+
             const realLastHash=chain[i-1].hash;
 
             if(prevHash!==realLastHash) return false;
